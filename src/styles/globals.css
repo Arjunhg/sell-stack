@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  :root {
+    --primary: #2563EB;
+    --secondary: #10B981;
+    --accent: #F59E0B;
+    --background: #ffffff;
+    --foreground: #1f2937;
+  }
+
+  .dark {
+    --background: #1f2937;
+    --foreground: #f9fafb;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
 }
 
 @theme inline {
