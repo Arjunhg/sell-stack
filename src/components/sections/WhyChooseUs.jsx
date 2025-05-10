@@ -51,7 +51,7 @@ export default function WhyChooseUs() {
     <div id="why-choose-us" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text">
             Why Choose SoftSell
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
@@ -70,10 +70,10 @@ export default function WhyChooseUs() {
               <motion.div
                 key={feature.name}
                 variants={item}
-                className="flex flex-col rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 hover:shadow-md transition-shadow"
+                className="card rounded-2xl p-8 hover-gradient"
               >
                 <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-foreground">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10">
                     <feature.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                   {feature.name}

@@ -2,16 +2,29 @@
 
 @layer base {
   :root {
-    --primary: #2563EB;
+    --primary: #4F46E5;
+    --primary-light: #6366F1;
     --secondary: #10B981;
+    --secondary-light: #34D399;
     --accent: #F59E0B;
-    --background: #ffffff;
-    --foreground: #1f2937;
+    --accent-light: #FBBF24;
+    --background: #FDFAF6;
+    --foreground: #1F2937;
+    --card-bg: #FFFFFF;
+    --card-border: #E5E7EB;
   }
 
   .dark {
-    --background: #1f2937;
-    --foreground: #f9fafb;
+    --primary: #6366F1;
+    --primary-light: #818CF8;
+    --secondary: #34D399;
+    --secondary-light: #6EE7B7;
+    --accent: #FBBF24;
+    --accent-light: #FCD34D;
+    --background: #111827;
+    --foreground: #F9FAFB;
+    --card-bg: #1F2937;
+    --card-border: #374151;
   }
 }
 
@@ -40,4 +53,33 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
 }
