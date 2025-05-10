@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import ChatWidget from '@/components/chat/ChatWidget';
 import { metadata } from './metadata';
 import '@/styles/globals.css';
 
@@ -32,27 +33,10 @@ export default function RootLayout({ children }) {
               {children}
             </main>
             <Footer />
+            <ChatWidget />
           </div>
         </ThemeProvider>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            (function() {
-              try {
-                // Ensure theme preference is applied immediately to prevent flash
-                const lsTheme = localStorage.getItem('theme');
-                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                
-                if (lsTheme === 'dark' || (lsTheme === null && systemPrefersDark)) {
-                  document.documentElement.classList.add('dark');
-                } else {
-                  document.documentElement.classList.remove('dark');
-                }
-              } catch (e) {
-                console.error('Failed to access localStorage for theme', e);
-              }
-            })();
-          `
-        }} />
+       
       </body>
     </html>
   );

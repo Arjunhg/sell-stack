@@ -176,3 +176,49 @@
 .scale-in {
   animation: scaleIn 0.3s ease-out forwards;
 }
+
+/* Chat widget styles */
+.chat-message-user {
+  background-color: var(--primary);
+  color: white;
+  align-self: flex-end;
+  border-radius: 18px 18px 4px 18px;
+}
+
+.chat-message-bot {
+  background-color: var(--card-bg);
+  color: var(--foreground);
+  align-self: flex-start;
+  border-radius: 18px 18px 18px 4px;
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--foreground);
+  opacity: 0.4;
+  margin: 0 1px;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation: bounce 1s infinite 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation: bounce 1s infinite 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation: bounce 1s infinite 0.4s;
+}
+
+@keyframes bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}
