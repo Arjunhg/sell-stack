@@ -1,8 +1,15 @@
+import Hero from '@/components/sections/Hero';
+import HowItWorks from '@/components/sections/HowItWorks';
+import WhyChooseUs from '@/components/sections/WhyChooseUs';
+import Testimonials from '@/components/sections/Testimonials';
 
 export default function Home() {
   return (
-    <div>
-      Hello
-    </div>
+    <>
+      <Hero />
+      <HowItWorks />
+      <WhyChooseUs />
+      <Testimonials />
+    </>
   );
 }
