@@ -50,23 +50,35 @@ export default function ContactForm() {
   return (
     <div id="contact" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text">
+        <motion.div 
+          className="mx-auto max-w-2xl text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
             Get Started Today
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-foreground">
             Ready to sell your software licenses? Fill out the form below and we'll get back to you within 24 hours.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="mx-auto mt-16 max-w-xl"
         >
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-card-bg p-8 rounded-xl shadow-md">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <label htmlFor="name" className="block text-sm font-medium text-foreground">
                 Name
               </label>
@@ -75,15 +87,26 @@ export default function ContactForm() {
                   type="text"
                   id="name"
                   {...register('name')}
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-foreground shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-white dark:bg-gray-800"
+                  className="animated-outline block w-full rounded-md border-0 px-3.5 py-2 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-white dark:bg-gray-700 text-white "
                 />
                 {errors.name && (
-                  <p className="mt-2 text-sm text-red-600">{errors.name.message}</p>
+                  <motion.p 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-600"
+                  >
+                    {errors.name.message}
+                  </motion.p>
                 )}
               </div>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
               <label htmlFor="email" className="block text-sm font-medium text-foreground">
                 Email
               </label>
@@ -92,15 +115,26 @@ export default function ContactForm() {
                   type="email"
                   id="email"
                   {...register('email')}
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-foreground shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-white dark:bg-gray-800"
+                  className="animated-outline block w-full rounded-md border-0 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-white dark:bg-gray-700"
                 />
                 {errors.email && (
-                  <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
+                  <motion.p 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-600"
+                  >
+                    {errors.email.message}
+                  </motion.p>
                 )}
               </div>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
               <label htmlFor="company" className="block text-sm font-medium text-foreground">
                 Company
               </label>
@@ -109,38 +143,26 @@ export default function ContactForm() {
                   type="text"
                   id="company"
                   {...register('company')}
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-foreground shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-white dark:bg-gray-800"
+                  className="animated-outline block w-full rounded-md border-0 px-3.5 py-2 text-white  shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-white dark:bg-gray-700"
                 />
                 {errors.company && (
-                  <p className="mt-2 text-sm text-red-600">{errors.company.message}</p>
+                  <motion.p 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-600"
+                  >
+                    {errors.company.message}
+                  </motion.p>
                 )}
               </div>
-            </div>
+            </motion.div>
 
-            <div>
-              <label htmlFor="licenseType" className="block text-sm font-medium text-foreground">
-                License Type
-              </label>
-              <div className="mt-2">
-                <select
-                  id="licenseType"
-                  {...register('licenseType')}
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-foreground shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-white dark:bg-gray-800"
-                >
-                  <option value="">Select a license type</option>
-                  {licenseTypes.map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </select>
-                {errors.licenseType && (
-                  <p className="mt-2 text-sm text-red-600">{errors.licenseType.message}</p>
-                )}
-              </div>
-            </div>
-
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+            >
               <label htmlFor="message" className="block text-sm font-medium text-foreground">
                 Message
               </label>
@@ -149,31 +171,42 @@ export default function ContactForm() {
                   id="message"
                   rows={4}
                   {...register('message')}
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-foreground shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-white dark:bg-gray-800"
+                  className="animated-outline block w-full rounded-md border-0 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-white dark:bg-gray-700"
                 />
                 {errors.message && (
-                  <p className="mt-2 text-sm text-red-600">{errors.message.message}</p>
+                  <motion.p 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-600"
+                  >
+                    {errors.message.message}
+                  </motion.p>
                 )}
               </div>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+            >
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-md bg-gradient-to-r from-primary to-primary-light px-6 py-3 text-sm font-semibold text-white shadow-sm hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="animated-outline w-full rounded-md bg-gradient-to-r from-primary to-secondary px-6 py-3 text-sm font-semibold  shadow-sm hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:cursor-pointer button-text"
               >
                 {isSubmitting ? 'Submitting...' : 'Submit'}
               </button>
-            </div>
+            </motion.div>
 
             {submitSuccess && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="rounded-md bg-green-50 dark:bg-green-900/50 p-4"
+                className="rounded-md bg-accent/10 dark:bg-green-900/50 p-4"
               >
-                <p className="text-sm text-green-800 dark:text-green-200">
+                <p className="text-sm text-secondary dark:text-green-200">
                   Thank you for your message! We'll get back to you soon.
                 </p>
               </motion.div>
@@ -183,4 +216,4 @@ export default function ContactForm() {
       </div>
     </div>
   );
-} 
+}

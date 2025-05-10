@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
@@ -15,10 +15,21 @@ const navigation = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  
+  // After mounting, we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Direct toggle between light and dark mode
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  };
 
   return (
-    <header className="fixed w-full bg-background/80 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-800">
+    <header className="fixed w-full bg-background/80 backdrop-blur-sm z-50 border-b border-card-border dark:border-gray-800 shadow-sm">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
@@ -39,13 +50,16 @@ export default function Header() {
               </Link>
             ))}
             <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-card-bg dark:bg-gray-800 hover:bg-accent/10 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle theme"
             >
-              {theme === 'dark' ? (
-                <SunIcon className="h-5 w-5 text-foreground" />
-              ) : (
-                <MoonIcon className="h-5 w-5 text-foreground" />
+              {mounted && (
+                resolvedTheme === 'dark' ? (
+                  <SunIcon className="h-5 w-5 text-foreground" />
+                ) : (
+                  <MoonIcon className="h-5 w-5 text-foreground" />
+                )
               )}
             </button>
           </div>
@@ -89,12 +103,12 @@ export default function Header() {
               ))}
               <button
                 onClick={() => {
-                  setTheme(theme === 'dark' ? 'light' : 'dark');
+                  toggleTheme();
                   setIsMenuOpen(false);
                 }}
                 className="w-full text-left px-3 py-2 text-base font-medium text-foreground hover:text-primary transition-colors"
               >
-                {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                {mounted && (resolvedTheme === 'dark' ? 'Light Mode' : 'Dark Mode')}
               </button>
             </div>
           </div>

@@ -2,33 +2,38 @@
 
 @layer base {
   :root {
-    --primary: #4F46E5;
-    --primary-light: #6366F1;
-    --secondary: #10B981;
-    --secondary-light: #34D399;
-    --accent: #F59E0B;
-    --accent-light: #FBBF24;
-    --background: #FDFAF6;
-    --foreground: #1F2937;
-    --card-bg: #FFFFFF;
-    --card-border: #E5E7EB;
+    --primary: #E57373; /* Lighter red */
+    --primary-light: #FFCDD2; /* Very light red */
+    --secondary: #FF8A65; /* Light coral */
+    --secondary-light: #FFAB91; /* Lighter coral */
+    --accent: #FFD54F; /* Amber accent */
+    --accent-light: #FFE082; /* Light amber */
+    --background: #FFF8E1; /* Creamy background */
+    --foreground: #5D4037; /* Brown text for contrast */
+    --card-bg: #FFF3E0; /* Slightly darker cream for cards */
+    --card-border: #FFECB3; /* Subtle border */
   }
 
+  /* Restore original dark theme values */
   .dark {
-    --primary: #6366F1;
-    --primary-light: #818CF8;
-    --secondary: #34D399;
-    --secondary-light: #6EE7B7;
-    --accent: #FBBF24;
-    --accent-light: #FCD34D;
-    --background: #111827;
-    --foreground: #F9FAFB;
-    --card-bg: #1F2937;
-    --card-border: #374151;
+    --primary: #6366F1; /* Original indigo */
+    --primary-light: #818CF8; /* Light indigo */
+    --secondary: #34D399; /* Original green */
+    --secondary-light: #6EE7B7; /* Light green */
+    --accent: #FBBF24; /* Original amber */
+    --accent-light: #FCD34D; /* Light amber */
+    --background: #111827; /* Original dark background */
+    --foreground: #F9FAFB; /* Original light text */
+    --card-bg: #1F2937; /* Original dark card */
+    --card-border: #374151; /* Original dark border */
   }
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -42,19 +47,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 /* Custom gradient backgrounds */
 .gradient-bg {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -64,6 +56,7 @@ body {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text; /* Add standard property for wider compatibility */
 }
 
 /* Custom scrollbar */
@@ -82,4 +75,104 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-light);
+}
+
+/* Button text styles for proper contrast */
+.button-text {
+  color: var(--button-text, #5D4037);
+}
+
+.dark .button-text {
+  color: var(--button-text-dark, #FFFFFF);
+}
+
+/* Animated outline styles */
+.animated-outline {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: border-rotate 4s linear infinite;
+  background-size: 300% 100%;
+}
+
+@keyframes border-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hover gradient effect */
+.hover-gradient {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hover-gradient::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-gradient:hover::after {
+  opacity: 1;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Scale animation */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
 }

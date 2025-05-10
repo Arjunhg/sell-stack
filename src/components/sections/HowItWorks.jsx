@@ -48,10 +48,10 @@ export default function HowItWorks() {
     <div id="how-it-works" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
             How It Works
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-foreground">
             Selling your software licenses has never been easier. Follow these three simple steps to get started.
           </p>
         </div>
@@ -64,14 +64,14 @@ export default function HowItWorks() {
         >
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
             {steps.map((step) => (
-              <motion.div key={step.id} variants={item} className="flex flex-col">
+              <motion.div key={step.id} variants={item} className="flex flex-col bg-card-bg p-6 rounded-lg shadow-sm">
                 <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-foreground">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                     <step.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                   {step.name}
                 </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-foreground/80 dark:text-gray-500">
                   <p className="flex-auto">{step.description}</p>
                   <p className="mt-6">
                     <span className="text-sm font-semibold leading-6 text-primary">
@@ -86,4 +86,4 @@ export default function HowItWorks() {
       </div>
     </div>
   );
-} 
+}
