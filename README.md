@@ -24,7 +24,7 @@ This is a responsive marketing landing page for SoftSell, a platform for selling
 First, clone the repository:
 
 ```bash
-git clone https://github.com/Arjunhg/marketing-page.git
+git clone https://github.com/Arjunhg/sell-stack.git
 ```
 
 Second, install the dependencies:
